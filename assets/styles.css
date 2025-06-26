@@ -103,3 +103,40 @@ h1 {
     font-size: 1.2rem;
   }
 }
+
+
+/* Hide RangeSlider marks on screens ≤ 600 px
+   to prevent text overlap */
+@media (max-width: 600px) {
+  .rc-slider .rc-slider-mark,
+  .rc-slider .rc-slider-mark-text,
+  .rc-slider .rc-slider-dot {
+    display: none !important;
+  }
+}
+
+
+/* ---------- Slider mark styles ---------- */
+
+/* Desktop ≥ 1001 px: keep single line (whitespace collapsed) */
+@media (min-width: 1001px) {
+  .rc-slider-mark-text {
+    white-space: nowrap;
+  }
+}
+
+/* Medium screens 600–1000 px: allow newline (month over year) */
+@media (min-width: 600px) and (max-width: 1000px) {
+  .rc-slider-mark-text {
+    white-space: pre-line;  /* respects the \n */
+    line-height: 12px;      /* tighten vertical space if you like */
+    font-size: 11px;        /* optional tweak */
+  }
+}
+
+/* Phones < 600 px: hide marks (you already have this, keep it) */
+@media (max-width: 599px) {
+  .rc-slider-mark,
+  .rc-slider-mark-text,
+  .rc-slider-dot { display: none !important; }
+}

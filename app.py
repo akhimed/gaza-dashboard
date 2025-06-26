@@ -123,7 +123,7 @@ app.layout = html.Div(
                     max=len(df) - 1,
                     value=[0, len(df) - 1],
                     marks={
-                        i: d.strftime("%b %Y")
+                        i: d.strftime("%b\n%Y")
                         for i, d in enumerate(df["report_date"])
                         if d.day == 1
                     },
