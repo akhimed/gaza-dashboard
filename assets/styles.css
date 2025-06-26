@@ -140,3 +140,10 @@ h1 {
   .rc-slider-mark-text,
   .rc-slider-dot { display: none !important; }
 }
+
+@media (max-width: 600px) {
+  iframe {
+    width: 100% !important;
+    height: 700px !important;
+  }
+}

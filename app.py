@@ -96,7 +96,7 @@ def styled_dropdown(id, options, value):
 app.layout = html.Div(
     [
         html.H1("Loss of Life in Palestine (Gaza, West Bank)", style={"textAlign": "center"}),
-        html.H3("Since October 7, 2023 (These metrics do not fully reflect the loss of human life in Palestine)", 
+        html.H2("Since October 7, 2023 (These metrics do not fully reflect the loss of human life in Palestine", 
                 style={"textAlign": "center"}),
         # KPI ROW (cards now include 7-day delta)
         html.Div(id="kpi-row"),
@@ -138,6 +138,29 @@ app.layout = html.Div(
 
         # main figure
         dcc.Graph(id="main-graph"),
+
+        html.H3("iteractive Tableau View of Data:", 
+            style={"textAlign": "center"}),
+        # --- Tableau iframe  ---------------------------------------
+        html.Div(
+        html.Iframe(
+            src="https://public.tableau.com/views/GazaCasualtyDashboard20232025/"
+                "GazaCasualtyDashboard20232025?:showVizHome=no&:embed=true",
+            style={
+                "width": "90%",           # adjust as needed
+                "height": "900px",
+                "border": "none"
+            },
+        ),
+        style={
+            "display": "flex",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "margin": "20px 0"
+        },
+    ),
+
+
 
         html.Div(  # 1️⃣ hidden JSON store
             dcc.Store(id="data-store", data=df.to_json(date_format="iso", orient="split"))
