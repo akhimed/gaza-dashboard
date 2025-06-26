@@ -28,7 +28,8 @@ empty_fig.add_annotation(
 # --- Dash boilerplate ---
 app = dash.Dash(__name__)          # initialize the app
 
-
+# expose Flask server for WSGI (Render / gunicorn)
+server = app.server
 
 latest = df.iloc[-1]
 prev   = df.iloc[-(WINDOW + 1)]    # roughly 7 days earlier
