@@ -139,7 +139,7 @@ app.layout = html.Div(
         # main figure
         dcc.Graph(id="main-graph"),
 
-        html.H3("iteractive Tableau View of Data:", 
+        html.H3("Interactive Tableau View of Data:", 
             style={"textAlign": "center"}),
         # --- Tableau iframe  ---------------------------------------
         html.Div(
