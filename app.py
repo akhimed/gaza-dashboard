@@ -95,7 +95,7 @@ def styled_dropdown(id, options, value):
 
 app.layout = html.Div(
     [
-        html.H1("Loss of Life in Palestine (Gaza, West Bank)", style={"textAlign": "center"}),
+        html.H1("Loss of Life in Gaza", style={"textAlign": "center"}),
         html.H2("Since October 7, 2023 (These metrics do not fully reflect the loss of human life in Palestine", 
                 style={"textAlign": "center"}),
         # KPI ROW (cards now include 7-day delta)
