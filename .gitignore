@@ -1,0 +1,34 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environment
+venv/
+.env/
+.env.bak/
+env/
+*.env
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# VSCode or other editors
+.vscode/
+.idea/
+
+# Heroku / Render logs
+*.log
+
+# Local data files (if any)
+*.csv
+*.xlsx
+
+# OS-specific metadata
+desktop.ini

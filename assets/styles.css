@@ -1,0 +1,105 @@
+/* ---------- Colors ---------- */
+:root {
+  --pal-black:  #1f1f1f;
+  --pal-red:    #d62828;
+  --pal-green:  #2aa952;
+}
+/* Put this in assets/styles.css, after the :root block */
+body {
+  background: linear-gradient(
+      135deg,
+      rgba(214, 40, 40, 0.15)  0%,    /* red   @ top-left  */
+      rgba(255, 255, 255, 0.15) 33%,  /* white */
+      rgba(42, 169, 82, 0.15)  66%,   /* green */
+      rgba(31, 31, 31, 0.15) 100%     /* black @ bottom-right */
+  );
+  background-attachment: fixed;       /* stays put on scroll */
+}
+
+
+/* ---------- Headline ---------- */
+h1 {
+  color: var(--pal-black);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- KPI cards ---------- */
+.kpi-card {              /* keep your existing box-shadow etc. */
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 16px 24px;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.kpi-card h3 { margin:0; font-size:1.6rem; color:var(--pal-black);}
+.kpi-card p  { margin:4px 0 0; font-size:0.85rem; color:#666;}
+
+/* delta colors injected inline in Python:
+   red  = --pal-red   (#d62828)
+   green= --pal-green (#2aa952)
+*/
+
+/* ---------- Dropdown (className="dropdown-menu") ---------- */
+.dropdown-menu {
+  width: 280px;
+  margin: 10px auto;
+  font-size: 15px;
+  border: 2px solid var(--pal-black);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+.dropdown-menu:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.dropdown-menu:focus-within {
+  border-color: var(--pal-green);
+}
+
+/* Dash internal sub-elements (optional polish) */
+.dropdown-menu .Select-control { border:none!important; }
+.dropdown-menu .Select-placeholder,
+.dropdown-menu .Select-value-label { color:var(--pal-black)!important; }
+
+/* ---------- Slider accent ---------- */
+.rc-slider-track        { background: var(--pal-red)!important; }
+.rc-slider-handle       { border-color: var(--pal-red)!important; }
+.rc-slider-handle:hover,
+.rc-slider-handle:active{ border-color: #b71f1f!important; }
+.rc-slider-dot-active   { border-color: var(--pal-red)!important; }
+
+/* ---------- Flex wrapper tweaks ---------- */
+.control-wrap { max-width:420px; margin:8px auto 24px; }
+
+/*card entry animation*/
+.kpi-card {
+  animation: fadeInUp 0.5s ease;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*mobile responsiveness*/
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .kpi-card h3 {
+    font-size: 1.2rem;
+  }
+}

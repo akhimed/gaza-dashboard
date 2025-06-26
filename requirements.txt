@@ -1,0 +1,5 @@
+dash              # the framework (includes Flask underneath)
+plotly            # graphing back-end for Dash
+pandas            # DataFrame handling
+requests          # API + CSV fetches
+gunicorn          # production WSGI server for Render/Heroku
