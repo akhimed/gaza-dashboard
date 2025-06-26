@@ -3,17 +3,28 @@
   --pal-black:  #1f1f1f;
   --pal-red:    #d62828;
   --pal-green:  #2aa952;
+  --font-body:  "Inter", "Segoe UI", Roboto, sans-serif;   /* fallback list */
 }
-/* Put this in assets/styles.css, after the :root block */
+
+/* ---------- Body ---------- */
 body {
+  font-family: var(--font-body);
   background: linear-gradient(
       135deg,
-      rgba(214, 40, 40, 0.15)  0%,    /* red   @ top-left  */
+      rgba(214, 40, 40, 0.15)  0%,    /* red */
       rgba(255, 255, 255, 0.15) 33%,  /* white */
       rgba(42, 169, 82, 0.15)  66%,   /* green */
-      rgba(31, 31, 31, 0.15) 100%     /* black @ bottom-right */
+      rgba(31, 31, 31, 0.15) 100%     /* black */
   );
-  background-attachment: fixed;       /* stays put on scroll */
+  background-attachment: fixed;
+  color: var(--pal-black);
+  margin: 0;               /* keeps layout tight */
+}
+
+/* Optional: make headings a bit bolder */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
 }
 
 

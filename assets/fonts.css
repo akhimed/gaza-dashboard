@@ -1,0 +1,6 @@
+/* assets/fonts.css  ── loaded automatically by Dash */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  --font-body: "Inter", "Segoe UI", Roboto, sans-serif;
+}
