@@ -119,43 +119,43 @@ app.layout = html.Div(
         # KPI ROW (cards now include 7-day delta)
         html.Div(id="kpi-row"),
 
-        # metric selector
-        styled_dropdown(
-            id="metric-dropdown",
-            options=[
-                {"label": "Total Killed",    "value": "killed_cum"},
-                {"label": "Total Injured",   "value": "injured_cum"},
-                {"label": "Children Killed", "value": "ext_killed_children_cum"},
-                {"label": "Women Killed",    "value": "ext_killed_women_cum"},
-            ],
-            value="killed_cum"
-        ),
+        # # metric selector
+        # styled_dropdown(
+        #     id="metric-dropdown",
+        #     options=[
+        #         {"label": "Total Killed",    "value": "killed_cum"},
+        #         {"label": "Total Injured",   "value": "injured_cum"},
+        #         {"label": "Children Killed", "value": "ext_killed_children_cum"},
+        #         {"label": "Women Killed",    "value": "ext_killed_women_cum"},
+        #     ],
+        #     value="killed_cum"
+        # ),
 
 
-        # date-range slider (labels = first day of each month)
-        html.Div(
-            [
-                dcc.RangeSlider(
-                    id="date-range-slider",
-                    min=0,
-                    max=len(df) - 1,
-                    value=[0, len(df) - 1],
-                    marks={
-                        i: d.strftime("%b\n%Y")
-                        for i, d in enumerate(df["report_date"])
-                        if d.day == 1
-                    },
-                    step=1,
-                    tooltip={"placement": "bottom", "always_visible": False},
-                    updatemode="mouseup",
-                    allowCross=False,
-                ),
-            ],
-            style={"margin": "30px 20px"},
-        ),
+        # # date-range slider (labels = first day of each month)
+        # html.Div(
+        #     [
+        #         dcc.RangeSlider(
+        #             id="date-range-slider",
+        #             min=0,
+        #             max=len(df) - 1,
+        #             value=[0, len(df) - 1],
+        #             marks={
+        #                 i: d.strftime("%b\n%Y")
+        #                 for i, d in enumerate(df["report_date"])
+        #                 if d.day == 1
+        #             },
+        #             step=1,
+        #             tooltip={"placement": "bottom", "always_visible": False},
+        #             updatemode="mouseup",
+        #             allowCross=False,
+        #         ),
+        #     ],
+        #     style={"margin": "30px 20px"},
+        # ),
 
-        # main figure
-        dcc.Graph(id="main-graph"),
+        # # main figure
+        # dcc.Graph(id="main-graph"),
 
         html.H3("Interactive Tableau View of Data:", 
             style={"textAlign": "center"}),
