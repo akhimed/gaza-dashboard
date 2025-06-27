@@ -114,7 +114,7 @@ def last_change_date(series):
 app.layout = html.Div(
     [
         html.H1("Loss of Life in Gaza", style={"textAlign": "center"}),
-        html.H2("Since October 7, 2023 (These metrics do not fully reflect the loss of human life in Palestine", 
+        html.H2("Since October 7, 2023 (These metrics do not fully reflect the loss of human life in Gaza)", 
                 style={"textAlign": "center"}),
         # KPI ROW (cards now include 7-day delta)
         html.Div(id="kpi-row"),
