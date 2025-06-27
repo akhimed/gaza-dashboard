@@ -64,21 +64,26 @@ def format_delta(value):
     else:
         return "—", "#6b7280", 0                 # gray
 
-def kpi_card(label, value, delta):
+def kpi_card(label, value, delta, last_updated=None):
     arrow, color, abs_delta = format_delta(delta)
 
+    if abs_delta:                      # normal behaviour
+        footer = html.Span(
+            f"{arrow} {abs_delta:,} / {WINDOW}d",
+            style={"color": color, "fontSize": "0.75rem"},
+        )
+    else:                              # no movement → show last update
+        footer = html.Span(
+            f"last update: {last_updated}",
+            style={"color": "#6b7280", "fontSize": "0.75rem", "fontStyle": "italic"},
+        )
+
     return html.Div(
-        [
-            html.H3(f"{value:,}"),
-            html.P(label),
-            html.Span(
-                f"{arrow} {abs_delta:,} / {WINDOW}d",
-                style={"color": color, "fontSize": "0.75rem"},
-            ),
-        ],
+        [html.H3(f"{value:,}"), html.P(label), footer],
         className="kpi-card",
         style={"flex": "1"},
     )
+
 
 
 def styled_dropdown(id, options, value):
@@ -90,6 +95,19 @@ def styled_dropdown(id, options, value):
         className="dropdown-menu",  # 🔗 hook to CSS
     )
 
+
+
+def last_change_date(series):
+    """Return the most-recent date where the value changed."""
+    # reverse-scan until value differs from the latest one
+    latest_val = series.iloc[-1]
+    mask = series != latest_val
+    if mask.any():
+        # index of last True → the row *before* repeats started
+        last_row = mask[::-1].idxmax()
+        return df.loc[last_row, "report_date"].strftime("%b %d %Y")
+    else:
+        return None          # never changed (edge-case)
 
 
 
@@ -233,19 +251,25 @@ def update_graph(metric, date_range, json_df):
 def update_kpis(json_df):
     df = pd.read_json(io.StringIO(json_df), orient="split")
     latest = df.iloc[-1]
-    prev   = df.iloc[-8]  # 7-day window
+    prev   = df.iloc[-8]
 
-    # Deltas
+    # deltas
     delta_killed  = latest["killed_cum"]             - prev["killed_cum"]
     delta_injured = latest["injured_cum"]            - prev["injured_cum"]
     delta_child   = latest["ext_killed_children_cum"] - prev["ext_killed_children_cum"]
     delta_women   = latest["ext_killed_women_cum"]    - prev["ext_killed_women_cum"]
 
+    # last-updated stamps for static series
+    child_last  = last_change_date(df["ext_killed_children_cum"])
+    women_last  = last_change_date(df["ext_killed_women_cum"])
+
     cards = [
         kpi_card("Total Killed",    int(latest["killed_cum"]),          delta_killed),
         kpi_card("Total Injured",   int(latest["injured_cum"]),         delta_injured),
-        kpi_card("Children Killed", int(latest["ext_killed_children_cum"]), delta_child),
-        kpi_card("Women Killed",    int(latest["ext_killed_women_cum"]),    delta_women),
+        kpi_card("Children Killed", int(latest["ext_killed_children_cum"]),
+                 delta_child, last_updated=child_last),
+        kpi_card("Women Killed",    int(latest["ext_killed_women_cum"]),
+                 delta_women, last_updated=women_last),
     ]
 
     return html.Div(
