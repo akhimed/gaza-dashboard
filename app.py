@@ -161,15 +161,19 @@ app.layout = html.Div(
             style={"textAlign": "center"}),
         # --- Tableau iframe  ---------------------------------------
         html.Div(
-        html.Iframe(
-            src="https://public.tableau.com/views/GazaCasualtyDashboard20232025/"
-                "GazaCasualtyDashboard20232025?:showVizHome=no&:embed=true",
+                html.Iframe(
+            src=(
+                "https://public.tableau.com/views/"
+                "Book2_17509844206740/Dashboard1"
+                "?:showVizHome=no&:embed=true&publish=yes"
+            ),
             style={
-                "width": "90%",           # adjust as needed
+                "width": "90%",     # adjust as needed
                 "height": "900px",
-                "border": "none"
+                "border": "none",
             },
         ),
+
         style={
             "display": "flex",
             "justifyContent": "center",
