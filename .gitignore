@@ -26,9 +26,6 @@ Thumbs.db
 # Heroku / Render logs
 *.log
 
-# Local data files (if any)
-*.csv
-*.xlsx
 
 # OS-specific metadata
 desktop.ini
