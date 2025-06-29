@@ -11,10 +11,10 @@ server = app.server          # Render / gunicorn needs this
 def make_footer():
     return html.Footer(
         dbc.Container([
-            html.Div("Made with 💚 by Ahmad Hamed", className="text-center"),
+            html.Div("Made with 💚 by Ahmad Hamed", className="text-center text-white"),
             html.Div(
                 "Data source: Tech For Palestine Collective",
-                className="text-center text-muted",
+                className="text-center text-white",
                 style={"fontSize": "0.8rem"},
             ),
         ]),
