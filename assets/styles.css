@@ -34,23 +34,30 @@ h1 {
   font-weight: 700;
   letter-spacing: 0.5px;
 }
-
 /* ---------- KPI cards ---------- */
-.kpi-card {              /* keep your existing box-shadow etc. */
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  padding: 16px 24px;
-  text-align: center;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+.kpi-card{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:12px;
+  box-shadow:0 2px 4px rgba(0,0,0,.05);
+
+  /* ↓ shrink the footprint */
+  flex: 0 0 clamp(180px, 22vw, 260px);
+  max-width: clamp(180px, 22vw, 260px);
+
+
+  text-align:center;
+  transition:transform .15s ease,box-shadow .15s ease;
 }
-.kpi-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+
+.kpi-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
 }
-.kpi-card h3 { margin:0; font-size:1.6rem; color:var(--pal-black);}
-.kpi-card p  { margin:4px 0 0; font-size:0.85rem; color:#666;}
+
+.kpi-card h3{margin:0;font-size:1.6rem;color:var(--pal-black);}
+.kpi-card p {margin:4px 0 0;font-size:.85rem;color:#666;}
+
 
 /* delta colors injected inline in Python:
    red  = --pal-red   (#d62828)
