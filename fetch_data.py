@@ -54,15 +54,15 @@ def get_data(refresh: bool = False) -> pd.DataFrame:
     # Short-circuit: if we already have a static file modified today and
     # refresh=False, just read it.
     # ------------------------------------------------------------------ #
-    if (
-        STATIC_FILE.exists()
-        and not refresh
-        and pd.Timestamp(STATIC_FILE.stat().st_mtime, unit="s") >= today
-    ):
-        return (
-            pd.read_csv(STATIC_FILE, parse_dates=["report_date"])
-            .sort_values("report_date")
-        )
+    # if (
+    #     STATIC_FILE.exists()
+    #     and not refresh
+    #     and pd.Timestamp(STATIC_FILE.stat().st_mtime, unit="s") >= today
+    # ):
+    #     return (
+    #         pd.read_csv(STATIC_FILE, parse_dates=["report_date"])
+    #         .sort_values("report_date")
+    #     )
 
     # ------------------------------------------------------------------ #
     # Helper for downloading from a URL into a DataFrame

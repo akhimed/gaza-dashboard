@@ -121,7 +121,7 @@ layout = html.Div(
                 style={"textAlign": "center"}),
         # KPI ROW (cards now include 7-day delta)
         html.Div(id="kpi-row"),
-        html.P("*Children/Women figures are MoH estimates, updated only when MoH releases a new breakdown. They may appear flat between statements.",
+        html.P("*All figures are derived from the Tech For Palestine Collective, data updates when new databsets released. Some Statistics  may appear flat between statements.",
             style={
         "textAlign": "center",
         "fontSize": "0.85rem",   # optional tweaks
