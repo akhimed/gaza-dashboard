@@ -3,3 +3,4 @@ plotly            # graphing back-end for Dash
 pandas            # DataFrame handling
 requests          # API + CSV fetches
 gunicorn          # production WSGI server for Render/Heroku
+dash-bootstrap-components>=1.5.0   # works with Dash ≥3
